@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "name": "Shrek",
+      "email": "Shreksson",
+      "id": 1
+    },
+    {
+      "name": "Bob Ross",
+      "email": "bob@ross.com",
+      "id": 2
+    },
+    {
+      "name": "Sauron",
+      "email": "The Deciever",
+      "id": 3
+    },
+    {
+      "name": "Test",
+      "email": "test@test",
+      "id": 4
+    }
+  ]
+}

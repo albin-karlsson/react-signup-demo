@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MyForm from "./components/MyForm";
+import User from "./components/User";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  // Get users when the page loads
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  function getUsers() {
+    fetch("http://localhost:7000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MyForm onSubmitUser={getUsers} />
+      {users.map((u) => (
+        <User
+          key={u.id}
+          name={u.name}
+          email={u.email}
+        />
+      ))}
     </div>
   );
 }
